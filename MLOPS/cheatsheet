@@ -45,12 +45,15 @@ cd ../..	#Go up two levels
 cd -	#Go to previous directory
 cd /	#Go to root directory
 
+################
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet -O greenmarch.parquet
 rm 
 mkdir -p data
 mv green_tripdata_2025-01.parquet data/green_tripdata_2023-01.parquet # move file to folder
 mv greenjan.parquet green_tripdata_2025-01.parquet  #change file name origin, renamed
 python preprocess_data.py --raw_data_path . --dest_path ./output #run script. "." mean current directory and ./output mean to output folder (not existed mean create output folder)  
+python train.py --data_path ./output
+#################
 
 # Model Versioning
 git init
@@ -64,7 +67,23 @@ mlflow run .
 
 # Start MLflow UI
 mlflow ui --backend-store-uri sqlite:///mlflow.db
+mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5001 # different port if occupied
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
 
 # Set experiment
 mlflow experiments create --experiment-name my_experiment
 mlflow experiments list
+########################################################
+lsof -i :5000
+kill -9 XXXXX # XXXXX is the PID, only select the most decisive one, repeated or first PID
+
+#########################################################
+####Python####
+import mlflow
+import mlflow.sklearn
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("random-forest-hyperopt")
+mlflow.sklearn.autolog()
+with mlflow.start_run():
+mlflow.log_params(params)
+mlflow.log_metric("rmse", rmse)
