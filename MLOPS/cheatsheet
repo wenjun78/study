@@ -1,3 +1,9 @@
+# Open Terminal
+Ctrl + ~
+
+# Launch Jupyter Notebook
+jupyter notebook
+
 # Install a single package
 pip install pandas
 
@@ -38,6 +44,13 @@ cd ..	#Go up one directory
 cd ../..	#Go up two levels
 cd -	#Go to previous directory
 cd /	#Go to root directory
+
+wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet -O greenmarch.parquet
+rm 
+mkdir -p data
+mv green_tripdata_2025-01.parquet data/green_tripdata_2023-01.parquet # move file to folder
+mv greenjan.parquet green_tripdata_2025-01.parquet  #change file name origin, renamed
+python preprocess_data.py --raw_data_path . --dest_path ./output #run script. "." mean current directory and ./output mean to output folder (not existed mean create output folder)  
 
 # Model Versioning
 git init
