@@ -102,3 +102,8 @@ mlflow.sklearn.autolog()
 with mlflow.start_run():
 mlflow.log_params(params)
 mlflow.log_metric("rmse", rmse)
+
+
+
+pip install mage-ai
+mage start my_mage_project #Create a New Project (Folder)
