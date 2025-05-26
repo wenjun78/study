@@ -45,16 +45,31 @@ cd ../..	#Go up two levels
 cd -	#Go to previous directory
 cd /	#Go to root directory
 
-################
-wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet -O greenmarch.parquet
-rm file
-rm -rf folder 
-mkdir -p data # p = parent directory
-mv green_tripdata_2025-01.parquet data/green_tripdata_2023-01.parquet # move file to folder
-mv greenjan.parquet green_tripdata_2025-01.parquet  #change file name origin, renamed
-python preprocess_data.py --raw_data_path . --dest_path ./output #run script. "." mean current directory and ./output mean to output folder (not existed mean create output folder)  
-python train.py --data_path ./output
-#################
+# Download the parquet file and rename it during download
+wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet -O greenjan.parquet
+
+# Rename the downloaded file to its original name
+mv greenjan.parquet green_tripdata_2025-01.parquet
+
+# Create 'data' folder to store raw input
+mkdir -p data
+
+# Move and rename the file into the data folder
+mv green_tripdata_2025-01.parquet data/green_tripdata_2023-01.parquet
+
+# Run preprocessing script
+python preprocess_data.py --raw_data_path data --dest_path ./output
+## raw_data_path data tells the script to read from the data/ (extract folder).
+## dest_path ./output means to create or write to output/, which stores preprocessed (cleaned/feature-engineered) data.
+## . = current directory
+
+# Remove File
+rm file   # -i for interactive e.g. rm -i file
+## -i for interactive e.g. rm -i file
+
+# Remove Folder
+rm -r folder 
+## -i for interactive e.g. rm -r -i file
 
 # Model Versioning
 git init
@@ -69,7 +84,6 @@ mlflow run .
 # Start MLflow UI
 mlflow ui --backend-store-uri sqlite:///mlflow.db
 mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5001 # different port if occupied
-mlflow.set_tracking_uri("sqlite:///mlflow.db")
 
 # Set experiment
 mlflow experiments create --experiment-name my_experiment
