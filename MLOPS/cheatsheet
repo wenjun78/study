@@ -1,1 +1,57 @@
+# Install a single package
+pip install pandas
 
+# Install multiple packages
+pip install numpy scikit-learn matplotlib
+
+# Install with specific version
+pip install xgboost==1.7.6
+
+# Install from requirements.txt
+pip install -r requirements.txt
+
+# Install from a Git repo
+pip install git+https://github.com/username/repo.git
+
+# Upgrade pip itself
+pip install --upgrade pip
+
+# Upgrade a specific package
+pip install --upgrade seaborn
+
+# Create Environment
+conda create -n myenv python=3.10
+
+# Activate environment
+conda activate myenv
+
+# Deactivate current environment
+conda deactivate
+
+# List Environments
+conda env list
+
+# Change Directory
+cd path/to/dir	#Go to a specific directory
+cd ~ or cd	#Go to home directory
+cd ..	#Go up one directory
+cd ../..	#Go up two levels
+cd -	#Go to previous directory
+cd /	#Go to root directory
+
+# Model Versioning
+git init
+git status
+git add .
+git commit -m "Initial commit"
+git push 
+
+# Run an MLflow project
+mlflow run .
+
+# Start MLflow UI
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+
+# Set experiment
+mlflow experiments create --experiment-name my_experiment
+mlflow experiments list
