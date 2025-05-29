@@ -130,3 +130,4 @@ docker build -t duration-predictor .
 
 3. Run the Container (Bash)
 docker run duration-predictor python hw4.py 2023 5
+docker run duration-predictor 2023 5 # if no entry point in docker
