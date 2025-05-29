@@ -103,7 +103,30 @@ with mlflow.start_run():
 mlflow.log_params(params)
 mlflow.log_metric("rmse", rmse)
 
-
+####################################
 
 pip install mage-ai
-mage start my_mage_project #Create a New Project (Folder)
+mage start my_mage_project 
+
+####################################
+Jupyter to script:
+jupyter nbconvert --to script notebook.ipynb
+
+####################################
+1.Create Dockerfile (Dockerfile)
+
+FROM agrigorev/zoomcamp-model:mlops-2024-3.10.13-slim
+
+WORKDIR /app
+
+# Copy your script into the container
+COPY hw4.py .
+
+# Install dependencies
+RUN pip install pandas scikit-learn pyarrow
+
+2. Build Docker Image (Bash)
+docker build -t duration-predictor 
+
+3. Run the Container (Bash)
+docker run duration-predictor python hw4.py 2023 5
