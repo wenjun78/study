@@ -126,7 +126,7 @@ COPY hw4.py .
 RUN pip install pandas scikit-learn pyarrow
 
 2. Build Docker Image (Bash)
-docker build -t duration-predictor 
+docker build -t duration-predictor .
 
 3. Run the Container (Bash)
 docker run duration-predictor python hw4.py 2023 5
