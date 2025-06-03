@@ -140,7 +140,12 @@ docker-compose up --build	### Builds images (if needed) and starts containers us
 docker-compose down	### Stops and removes containers, networks, and restores system to a clean state
 
 ###########################################
-docker run hello-world
-evidently ui
+docker run hello-world #Run a test container to check if Docker is installed and working properly.
+evidently ui 
+
+export OPEN_AI_Key="XXXXX"
+
+
+
 
 
