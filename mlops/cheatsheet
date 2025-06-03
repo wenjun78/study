@@ -138,3 +138,9 @@ sudo rm -rf 05-monitor
 
 docker-compose up --build	### Builds images (if needed) and starts containers using the latest image changes
 docker-compose down	### Stops and removes containers, networks, and restores system to a clean state
+
+###########################################
+docker run hello-world
+evidently ui
+
+
