@@ -143,7 +143,7 @@ docker-compose down	### Stops and removes containers, networks, and restores sys
 docker run hello-world #Run a test container to check if Docker is installed and working properly.
 evidently ui 
 
-export OPEN_AI_Key="XXXXX"
+export OPEN_AI_Key="XXXXX" ### need to add fund
 
 
 
