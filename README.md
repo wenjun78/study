@@ -1,7 +1,6 @@
 # Study      
 For future reference      
-              
-        
+
        
           
       
