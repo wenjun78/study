@@ -1,10 +1,3 @@
 # Study      
-For future reference         
-
-          
-
-
-                       
-Cheat Sheet?
- 
+For future reference        
            
